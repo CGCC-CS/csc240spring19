@@ -21,6 +21,15 @@ int list_add(node_t ** list, void * data) {
   return ret;
 }
 
+void * list_remove_first(node_t ** list) {
+  node_t * old_front = *list;
+  void * data = old_front->data;
+
+  *list = old_front->next;
+  free(old_front);
+  return data;
+}
+
 #ifdef TEST
 int main (void)
 {
@@ -28,14 +37,28 @@ int main (void)
   int * new_int;
   node_t * list = NULL;
   node_t * curr;
+  int num;
 
-  for(ii=0;ii<10;ii++) {
+  for(ii=1;ii<=10;ii++) {
     new_int = (int *) malloc(sizeof(int));
-    *new_int = ii * 10;
+    *new_int = rand() % ((ii+1) * 10);
     list_add(&list, new_int);
   }
 
   ii = 0;
+  curr = list;
+  while (curr != NULL) {
+    printf("list[%d] = %d\n", ii, *((int *) curr->data));
+    ii++;
+    curr = curr->next;
+  }
+
+  num = *((int *) list_remove_first(&list));
+  printf("Remove 1 = %d\n", num);
+  num = *((int *) list_remove_first(&list));
+  printf("Remove 2 = %d\n", num);
+  ii = 0;
+
   curr = list;
   while (curr != NULL) {
     printf("list[%d] = %d\n", ii, *((int *) curr->data));

@@ -1,4 +1,4 @@
-/* Examples of data types in C */
+/* C data type examples */
 #include<stdio.h>
 
 int main() {
@@ -12,6 +12,9 @@ int main() {
   float f = 10.0 / 3.0;  /* Float literals */
  
 
+  /* To print variables in C, you use a control sequence to represent the
+       variable's place in the string, then include a list of the variables
+       you want to print after the string. */
   /* Examples of printf control sequences 
      %d - integer
      %x - hexidecimal

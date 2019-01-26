@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-/* Forward declaration */
+/* Forward declaration - what happens if we remove these? */
 void say_hello();
 int add_ten(int);
 void add_twenty(int *);
@@ -33,14 +33,17 @@ void say_hello() {
   printf("Hello!\n");
 }
 
+/* Returns a value, does not modify x */
 int add_ten(int x) {
   return x + 10;
 }
 
+/* Modifies x, does not return a value */
 void add_twenty(int *x) {
   *x = *x + 20;
 }
 
+/* Since the array length is unknown, we ned to pass the length as well */
 int add_array(int a[], int len) {
   int ii;
   int sum = 0;
