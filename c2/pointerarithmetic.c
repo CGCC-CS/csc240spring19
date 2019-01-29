@@ -26,7 +26,7 @@ int main() {
   printf("z: %16d, %p, %lu\n", z, (void *) &z, sizeof(z));
   printf("p: %16p, %p, %lu, *p=%d\n", (void *) p, (void *) &p, sizeof(p), *p); 
 
-  /* YMMV - None of this is guaranteed to work as expected */
+  /* YMMV - None of this is guaranteed to work as it did in class */
   printf("\n*p++:\n");
   p++;
   printf("x: %16d, %p, %lu\n", x, (void *) &x, sizeof(x));

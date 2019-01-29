@@ -25,6 +25,11 @@ int main () {
   printf("s : %c [%d]\n", *(s+1), *(s+1));
   printf("t : %c [%d]\n", *(t+1), *(t+1));
 
+  printf("\n==== print character+8 ====\n");
+  printf("p : %c [%d]\n", *(p+8), *(p+8));
+  printf("s : %c [%d]\n", *(s+8), *(s+8));
+  printf("t : %c [%d]\n", *(t+8), *(t+8));
+
   printf("\n==== pointer arithmetic vs array indexing ====\n");
   printf("s: [%p] %c\n", (void *) &s, *(s+12));
   printf("s: [%p] %c\n", (void *) &s, s[12]);
