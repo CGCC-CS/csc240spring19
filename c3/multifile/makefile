@@ -1,11 +1,8 @@
-CC=gcc
-CFLAGS=-Wall -pedantic -ansi
-
 all: multifile.c mystuff.o
-	$(CC) $(CFLAGS) multifile.c mystuff.o
+	gcc -Wall -ansi -pedantic multifile.c mystuff.o
 
 mystuff.o: mystuff.c
-	$(CC) $(CFLAGS) -c mystuff.c
+	gcc -Wall -ansi -pedantic -c mystuff.c
 
 clean:
-	rm -rf *.o *~ a.*
+	rm -rf *.o *~ *.exe *.out
