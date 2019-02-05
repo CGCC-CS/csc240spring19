@@ -16,8 +16,8 @@ struct tightstruct{
 };
 
 /* alternating char int - since ints must be word aligned each int 
- *   will start after 3 bytes of char padding, wasting 3 bytes
- */
+ *  *   will start after 3 bytes of char padding, wasting 3 bytes
+ *   */
 struct loosestruct{
   char char1;
   int num1;
@@ -47,5 +47,3 @@ int main() {
 
     return 0;
 }
-
-

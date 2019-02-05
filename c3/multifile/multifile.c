@@ -1,9 +1,6 @@
 #include<stdio.h>
-#include"mystuff.h"  /* Quotes indicate to search for the header in local dir */
+#include"mystuff.h"
 
-/* Compile using 
- *    gcc -ansi -pedantic -Wall multifile.c mystuff.c
- */
 int main() {
   printf("Multifile example:\n");
   printf("Max1: %d\n", MAX(20, 13));
@@ -11,4 +8,3 @@ int main() {
   printf("Max3: %d\n", max_of_three(20, 13, NUM));
   return 0;
 }
-

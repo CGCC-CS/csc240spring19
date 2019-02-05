@@ -1,9 +1,0 @@
-Exception: STATUS_INTEGER_DIVIDE_BY_ZERO at eip=00401246
-eax=5851F42D ebx=00000000 ecx=5851F42D edx=00000000 esi=612AB84F edi=612AB84A
-ebp=0062CC78 esp=0062CC40 program=C:\Users\wadeh\Dropbox\CGCC\CSC240\CSC240\csc240spring19\c3\basiclist\a.exe, pid 18668, thread main
-cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
-Stack trace:
-Frame     Function  Args
-0062CC78  00401246 (00000001, 0062CC9C, 200000D0, 610079C2)
-0062CD18  61007A27 (00000000, 0062CD74, 61006A20, 00000000)
-End of stack trace

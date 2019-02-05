@@ -1,4 +1,3 @@
-#include<stdio.h>
 #include"mystuff.h"
 
 int max_of_three(int a, int b, int c) {
@@ -8,4 +7,3 @@ int max_of_three(int a, int b, int c) {
     return b;
   return c;
 }
-
