@@ -1,6 +1,10 @@
 #include<stdio.h>
 #include"mystuff.h"
 
+/* To compile:
+     gcc -ansi -pedantic -Wall multifile.c mystuff.c
+*/
+
 int main() {
   printf("Multifile example:\n");
   printf("Max1: %d\n", MAX(20, 13));
