@@ -11,15 +11,15 @@ class Animal {
     Animal(string s="NoName") {n=s;}   // Default value = "NoName"
 
     // Pure virtual method - must be overridden by any non-abstract
-    // derrived class;
+    //  derrived class.
     virtual void speak() = 0;
 
     // Virtual method - can be overridden by the child class.  The type of
     // the *object* being pointed to determines the method that gets called.
-    virtual void move() { cout << "ANIMAL: I'm moving!" << endl; }
+    virtual void move() { cout << "ANIMAL: I'm Moving!" << endl; }
 
-    // Not-virtual method - can be overridden by the child class.
-    // The type of the *pointer* determines the method that gets called.
+    // Non-virtual method - can be overridden by the child class.  The 
+    // type of the *pointer* determines the method that gets called.
     void eat() { cout << "ANIMAL: I'm hungry!" << endl; }
 };
 
@@ -28,9 +28,7 @@ class Dog : public Animal {
     Dog(string s="Dog") : Animal(s) {}
 
     void speak() { cout << n << ": Woof!" << endl; }
-
     void move() { cout << n << ": Run around!" << endl; }
-
     void fetch() { cout << n << ": Ball! Ball!" << endl; }
 };
 
@@ -42,85 +40,83 @@ class Cat : public Animal {
 };
 
 int main() {
-  //Animal a;  // Cannot instantiate an Animal
-
-  Dog d("Scruffy");
-  Dog *dptr;
+  //Animal a;   // Cannot instantiate an Animal
+  //Animal * aptr;
+  Dog d("Rover");
+  Dog * dptr;
   Dog &dogRef = d;
-
-  Cat c("Spinkles");
+  Cat c("Whiskers");
   Cat *cptr;
   Cat &catRef = c;
-  
+ 
   Animal *danimal, *canimal;
 
-  /* Cannot instantiate an abstract class 
+  /* Cannon instantiate an abstract class
   cout << endl << "Animal object: " << endl;
   a.speak();
-  a.move(); 
+  a.move();
   a.eat();
-  */
- 
-  /* Cannot instantiate an abstract class 
-  cout << endl << "Animal pointer to an animal object" << endl;
+
+  cout << endl << "Animal pointer to an Animal object: " << endl;
   aptr = new Animal("Anotherone");
   aptr->speak();
-  aptr->move(); 
+  aptr->move();
   aptr->eat();
   */
 
   cout << endl << "Dog object: " << endl;
   d.speak();
-  d.move(); 
-  d.eat();
+  d.move();
   d.fetch();
+  d.eat();
 
-  cout << endl << "Dog pointer to an dog object" << endl;
-  dptr = new Dog("Rover");
+  cout << endl << "Dog pointer to a Dog object: " << endl;
+  dptr = new Dog("Fluffy");
   dptr->speak();
-  dptr->move(); 
-  dptr->eat();
+  dptr->move();
   dptr->fetch();
+  dptr->eat();
 
-  cout << endl << "Dog reference: " << endl;
+  cout << endl << "Dog reference to a Dog object: " << endl;
   dogRef.speak();
-  dogRef.move(); 
-  dogRef.eat();
+  dogRef.move();
   dogRef.fetch();
+  dogRef.eat();
 
-  cout << endl << "Animal pointer to an dog object" << endl;
-  danimal = dptr;
+  cout << endl << "Animal pointer to a Dog object: " << endl;
+  danimal = &d;
   danimal->speak();
-  danimal->move(); 
+  danimal->move();
+  //danimal->fetch();  // Animals do not know how to fetch
   danimal->eat();
-  //danimal->fetch();  // Animals don't know how to fetch!
-
-  cout << endl << "Animal reference to dog: " << endl;
-  Animal & animalRef = d;
-  animalRef.speak();
-  animalRef.move(); 
-  animalRef.eat();
 
   cout << endl << "Cat object: " << endl;
   c.speak();
-  c.move(); 
+  c.move();
   c.eat();
 
-  cout << endl << "Cat pointer to an cat object" << endl;
-  cptr = new Cat("Snowball");
+  cout << endl << "Cat pointer to a Cat object: " << endl;
+  cptr = new Cat("Garfield");
   cptr->speak();
-  cptr->move(); 
+  cptr->move();
   cptr->eat();
 
-  cout << endl << "Cat reference: " << endl;
+  cout << endl << "Cat reference to a Cat object: " << endl;
   catRef.speak();
-  catRef.move(); 
+  catRef.move();
   catRef.eat();
 
-  cout << endl << "Animal pointer to an cat object" << endl;
-  canimal = cptr;
+  cout << endl << "Animal pointer to a Cat object: " << endl;
+  canimal = &c;
   canimal->speak();
-  canimal->move(); 
+  canimal->move();
   canimal->eat();
+
+  cout << endl << "Animal reference to a cat object: " << endl; 
+  Animal & animalRef = c;
+  animalRef.speak();
+  animalRef.move();
+  animalRef.eat();
+  
   return 0;
 }
