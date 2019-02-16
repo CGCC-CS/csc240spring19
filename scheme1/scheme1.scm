@@ -45,13 +45,21 @@
 (real? 2+0i)
 
 (newline)
-"Symbols & Strings"
+"Symbols, Strings, & Numbers"
 (symbol? "hello")
 (string? "hello")
 (symbol? 'hello)
 (string? 'hello)
 (symbol->string 'hello)
 (string->symbol "hello")
+(symbol? 5)
+(symbol? '5)
+(number? 5)
+(number? (- 10 5))
+(number? (car '(8 10 5)))
+(number? "One")
+(number? 'One)
+(integer? 5)
 
 (newline)
 "Math"
@@ -62,6 +70,11 @@
 (+ 1 2 3 4 5 6 7 8 9 10)
 (* 1 2 3 4 5 6 7 8 9 10)
 (* (/ (* 7 (- 8 2)) (/ (* 6 3) (* 2 3 2 (/ 1 2)))) 2)
+(sqrt 9)
+(sqrt 20)
+(/ 17 3) ; notice the output format
+(remainder 17 3)
+(quotient 17 3)
 
 (newline)
 "Define x, y, & z"
@@ -72,6 +85,11 @@ x
 y
 z
 (z)
+(+ 2 x)
+(* x (/ y 6))
+(= x 12)
+(= x 10)
+(= x (+ 15 -5))
 
 (newline)
 "Define a procedure"
@@ -110,6 +128,22 @@ trip
 ;(do 1 2)
 (do (lambda (x) (* x x)) 3)
 ;(do addem 1)
+
+(newline)
+"Conditionals"
+(if (> 3 2) 'bigger 'smaller)
+(if (< 3 2) 'bigger 'smaller)
+(define director
+  (lambda (k)
+    (cond
+      ((eq? k "Goodfellas") "Martin Scorsese")
+      ((eq? k "Inception") "Christopher Nolan")
+      ((eq? k "Rear Window") "Alfred Hitchcock")
+      ((eq? k "Aliens") "James Cameron")
+      (#t "Alan Smithee"))))
+
+(director "Inception")
+(director "CSC240 the Movie")
 
 (newline)
 (define fact
@@ -189,17 +223,21 @@ lst4
 
 (newline)
 "Checking equality"
+(define num 8)
 (= 32 32)
-(eq? 32 32)
-(equal? 32 32)
-(equal? 32 34)
-(newline)
-(eq? 'X 'X)
-(eq? '(1 2 3) '(1 2 3))
-(equal? 'X 'X)
-(equal? '(1 2 3) '(1 2 3))
 (= 32 (* 4 8))
-(= '32 (* 4 8))
+(= 8 num)
+(display "Equality checking: eq?")(newline)
+(eq? 'Hello 'Hello)
+(eq? 32 32)
+(eq? 8 num)
+(eq? 8 '8)
+(eq? '(1 2 3) '(1 2 3))
+(display "Equality checking: equal?")(newline)
+(equal? 'Hello 'Hello)
+(equal? 32 32)
+(equal? '(1 2 3) '(1 2 3))
+
 
 (newline)
 "Cool example"

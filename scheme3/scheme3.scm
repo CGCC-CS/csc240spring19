@@ -1,7 +1,40 @@
 #lang scheme
+(define abs
+  (lambda (x)
+    (if (negative? x)
+        (- x)
+        x)
+    ))
+
+(define (increment a) (+ a 1))  ;note that a has local scope
+((lambda (x) (+ x 1)) 7)
+(define increment_lambda
+  (lambda (x)
+    (+ x 1)))
+
+(define x 10)
+(increment 3)
+(increment x)
+(increment_lambda 10)
 
 (lambda (x) (* x 2))
 ((lambda (x) (* x 2)) 10)
+
+(define (do this toThat) (this toThat))
+(do increment 8)
+(do (lambda (x) (* x 2)) 10)
+
+; multi-conditional procedures
+(define grade 
+  (lambda (n)
+    (cond
+      ((>= n 900) 'A)
+      ((>= n 800) 'B)
+      (else 'F))))
+
+(grade 100)
+(grade 950)
+(grade 830)
 
 (define rev
   (lambda (lst)
@@ -19,6 +52,28 @@
 (define crazylist '(10 hello world (1 2 3 4) "csc" "240" (x y z w)))
 (define crazierlist '(10 hello world (1 (2 3) 4) "csc" "240" (a (b c) (d) (e))))
 (len crazylist)
+
+; Returns a procedure based on the parameter
+(define doThis
+  (lambda (n)
+    (cond
+      ( (> n 10) abs)
+      ( (> n 5) (lambda (k) (* k 3)))
+      (else (lambda (k) (+ k n))))))
+(do (doThis 12) 4)
+(do (doThis 7) 8)
+(do (doThis 2) 3)
+(do (doThis 3) 4)
+
+;compound statements
+(define (do_stuff x)
+  (begin
+    (display x)(newline)
+    (display "x!=")
+    (display "")(abs x)(newline)
+    (display "x^2=")(* x x)
+    (display "the end")
+    ))
 
 ; Count all elements in a list and its sub-lists
 (define element-count

@@ -141,6 +141,12 @@ lst
 (append '(a b c d) lst)
 (append lst lst)
 (append lst (cons lst lst))
+(null? '())  ; empty list is null!
+(null? lst)
+(= (length '()) 0)
+(= (length lst) 0)
+(member 3 lst)
+(member 5 lst)
 
 (newline)
 "List procedures"
@@ -153,6 +159,13 @@ lst
 (non-empty-list? 'list)
 (non-empty-list? '())
 (non-empty-list? lst)
+
+(define numlist
+  (lambda (n)
+    (if (< n 1)
+      '()
+      (append (numlist (- n 1)) (list n)))))
+(numlist 4)
 
 (define sumlist
   (lambda (lst)
@@ -234,3 +247,8 @@ pair3
 (cons 'a 'b)
 (cons 'a '())
 (cons 'a (cons 'b '()))
+
+;example of pairs
+'(30, 90)  ;lat/long
+'(neworleans . (30 . 90))
+
