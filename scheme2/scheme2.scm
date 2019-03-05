@@ -160,6 +160,53 @@ lst
 (non-empty-list? '())
 (non-empty-list? lst)
 
+(define do-nothing
+  (lambda (lst)
+    (if (not (non-empty-list? lst))
+        lst
+        (cons (car lst) (do-nothing (cdr lst))))))
+(do-nothing '())
+(do-nothing lst)
+
+"Check if something is a list of atoms - from The Little Schemer"
+(define atom?
+  (lambda (x)
+    (and (not (pair? x)) (not (null? x)))))
+(define lat?
+  (lambda (l)
+    (cond
+      ((null? l) #t)
+      ((atom? (car l)) (lat? (cdr l)))
+      (else #f))))
+(lat? '(1 2 3 4))
+(lat? '('a 'b 'c))
+(lat? '((1 2 3) (a b c)))
+
+"Check if something is a member of a list - from The Little Schemer"
+(define member?
+  (lambda (a lat)
+    (cond
+      ((null? lat) #f)
+      ((eq? (car lat) a) #t)
+      ((member? a (cdr lat)) #t)
+      (else #f))))
+(member 3 '(1 2 3 4))
+(member 5 '(1 2 3 4))
+(member 4 '(1 2 (3 4) 5))
+(member 5 '(1 2 (3 4) 5))
+
+"Remove an element from a list - from The Little Schemer"
+(define rember
+  (lambda (a lst)
+    (cond
+      ((null? lst) '())
+      ((eq? (car lst) a) (cdr lst))
+      (else (cons (car lst) (rember a (cdr lst)))))))
+(rember 3 '(1 2 3 4))
+(rember 1 '(1 2 3 4))
+(rember 5 '(1 2 3 4))
+
+"Generate a list of numbers up to n"
 (define numlist
   (lambda (n)
     (if (< n 1)
@@ -175,13 +222,6 @@ lst
 (sumlist lst)
 (sumlist '(-1 1 3 -4 7 -3 9 -4))
 
-(define do-nothing
-  (lambda (lst)
-    (if (not (non-empty-list? lst))
-        lst
-        (cons (car lst) (do-nothing (cdr lst))))))
-(do-nothing '())
-(do-nothing lst)
 
 (define double
   (lambda (x)

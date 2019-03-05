@@ -15,6 +15,19 @@
   (lambda (x)
     (* x 0)))
 
+; We need to define a few functions to use the examples from The Little Schemer
+"Check if something is an atom"
+(define atom?
+  (lambda (x)
+    (and (not (pair? x)) (not (null? x)))))
+(atom? 'atom)
+(atom? "ATOM")
+(atom? 8105)
+(atom? (cons 1 2))
+(atom? (list 1 2 3))
+
+
+(newline)
 "Data types"
 "Hello, world" ; string
 'HelloWorld    ; symbol
