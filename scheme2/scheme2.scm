@@ -206,6 +206,30 @@ lst
 (rember 1 '(1 2 3 4))
 (rember 5 '(1 2 3 4))
 
+"Replace an element in a list"
+(define replace
+  (lambda (lst ele rep)
+    (if (null? lst)
+        lst
+        (if (eq? (car lst) ele)
+            (cons rep (replace (cdr lst) ele rep))
+            (cons (car lst) (replace (cdr lst) ele rep))))))
+(replace '(1 2 3 4 3 2 1) 4 5)
+(replace '(1 2 3 4 3 2 1) 1 -1)
+(replace '(1 2 3 4 3 2 1) 3 'three)
+(replace '(a b c a b c d e f) 'b 'B)
+
+"Add two lists of numbers"
+(define addlists
+  (lambda (lst1 lst2)
+    (cond
+      ((null? lst1) lst2)
+      ((null? lst2) lst1)
+      (else (cons (+ (car lst1) (car lst2)) (addlists (cdr lst1) (cdr lst2)))))))
+(addlists '(1 2 3 4) '(10 20 30 40))
+(addlists '(1 2 3 4 5 6) '(1 1 1 1))
+(addlists '(1 2 3 4) '(1 1 1 1 1 1 1))
+
 "Generate a list of numbers up to n"
 (define numlist
   (lambda (n)
