@@ -177,6 +177,19 @@ badlst
 (filter (lambda (x) (< (+ x 1) 8))
         (filter number? badlst))
 
+; Currying
+(define big_num
+  (lambda (n)
+    (lambda (x)
+      (> x n))))
+(big_num 10)
+(define positive? (big_num 0))
+(define winner? (big_num 10))
+(positive? 3)
+(positive? -10)
+(winner? 8)
+(winner? 100)
+
 (newline)
 "Define a polynomial"
 (define quad
