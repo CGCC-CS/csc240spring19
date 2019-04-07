@@ -17,6 +17,16 @@ change(H, Q, D, N, P) :-
 	S =< 100,
 	P is 100 - S.
 
+% Cut example
+% Replace odd numbers with the atom odd, remove 0s, and even numbers with half their value
+% Cut below ensures we stop searching for a solution if the list is empty
+numrep([],[]) :- !.      
+% cut below stops searching if first element is 0
+numrep([0 | T], T1) :- !, numrep(T, T1). 
+% cut below stops searching if H is even
+numrep([H | T], [X | T1]) :- 0 =:= H mod 2, !, X is H / 2,  numrep(T, T1).  
+% We don't need to check if H is odd in the last rule, we know it is or else we would not reach this line
+numrep([_H | T], [odd | T1]) :-  numrep(T,T1).  
 
 %warm_blooded(dinosaur).
 warm_blooded(cat).

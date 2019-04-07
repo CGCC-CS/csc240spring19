@@ -4,10 +4,12 @@ knows_prolog(alice).
 
 passes_240(Student) :- knows_scheme(Student), knows_prolog(Student).
 
-factorial(1, 1) :- !.     % base case - 1! = 1
-%    N!              N1 = N-1        (N-1)!       F = (N-1!) * N
-factorial(N, F) :- N1 is N - 1, factorial(N1, F1), F is F1 * N.
-
+% math
+double(X, Y) :- Y is 2 * X.
+less_that_square_root(X, Y) :- Y < sqrt(X).
+tangent(X, Y) :- Y is tan(X).
+divides(X, Y) :- 0 is X mod Y.
+				 
 % nutrition/5
 % nutrition(Food, Calories, Fat, Carbs, Protein)
 nutrition(egg, 85, 6, 1, 6).
@@ -37,12 +39,18 @@ more_protein(X,Y) :-
 	protein_content(Y, ProteinY), 
 	ProteinX > ProteinY.
 
-% math
-double(X, Y) :- Y is 2 * X.
-less_that_square_root(X, Y) :- Y < sqrt(X).
-tangent(X, Y) :- Y is tan(X).
-divides(X, Y) :- 0 is X mod Y.
-				 
+factorial(1, 1) :- !.     % base case - 1! = 1
+%    N!              N1 = N-1        (N-1)!       F = (N-1!) * N
+factorial(N, F) :- N1 is N - 1, factorial(N1, F1), F is F1 * N.
+
+% recursive definition of numbers
+num(0).                    % 0 is a number
+num(succ(N)) :- num(N). % the successor of a number is a number
+add(0, X, X).              % adding 0 to a number gives the number
+add(X, 0, X).              % adding 0 to a number gives the number
+add(succ(X), Y, succ(Z)) :- add(X, Y, Z).  
+add(Y, succ(X), succ(Z)) :- add(X, Y, Z).  
+
 % family
 father(bob, alice).
 mother(sue, james).
@@ -104,6 +112,9 @@ first_two([H1, H2 | _T], H1, H2).
 % first_two/2
 first_two([H1, H2 | _T], [H1, H2]).
 
+% recursive list procedure - double each element in a list
+double_list([],[]).     % base case
+double_list([H | T], [H2 | T2]) :- H2 is H * 2, double_list(T,T2).
 
 % nextto/3 - 2 elements appear next to each other in a list
 nextto([X, Y | _T], X, Y).
