@@ -183,10 +183,10 @@ lst
       ((eq? (car lst) ele) #t)
       ((member? ele (cdr lst)) #t)
       (else #f))))
-(member 3 '(1 2 3 4))
-(member 5 '(1 2 3 4))
-(member 4 '(1 2 (3 4) 5))
-(member 5 '(1 2 (3 4) 5))
+(member? 3 '(1 2 3 4))
+(member? 5 '(1 2 3 4))
+(member? 4 '(1 2 (3 4) 5))
+(member? 5 '(1 2 (3 4) 5))
 
 "Remove an element from a list - from The Little Schemer"
 (define rember
